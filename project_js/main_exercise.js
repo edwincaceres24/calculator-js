@@ -65,9 +65,19 @@ const pedirProducto = cod => {
     if (!productoEncontrado) return "El producto no existe"
     pedido.push(productoEncontrado)
     console.log("Su producto ha sido agregado a su pedido. Su pedido es: ")
-    return pedido
+    return verPedido()
     
 }
 
+const verPedido = () => pedido
 
+let costoPedido= 0;
+const calcularCosto= () => {
+    let costo = 0
+    for (producto of pedido){
+        costoPedido = costoPedido + producto.costo; 
+    }
+    costoPedido= costo
+    return costoPedido
+}
 /*// .map me entrega un nuevo array que se llena con el retorno al usar .map */

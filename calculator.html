@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <title>Calculator</title>
+</head>
+<style>
+    * {
+        font-family: 'Ubuntu';
+    }
+
+    body {
+        background-color: #DD5E54;
+    }
+
+    h1 {
+        color: white;
+        font-size: 3em;
+        text-align: center;
+    }
+
+    .main-container {
+        background-color: white;
+        max-width: 80%;
+        min-height: 300px;
+        margin: 0 auto;
+        border-radius: 15px;
+        padding: .75rem 0.75rem;
+
+
+    }
+
+    @media screen and (max-width: 350px) {
+        .main-container {
+            min-height: 300px;
+            background-color: yellow;
+        }
+
+
+    }
+
+    .container-operators {
+        margin: 1rem 1.5rem;
+
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: 25% 25% 25% 25%;
+        min-height: 15em;
+        text-align: center;
+    }
+
+    .container-operators button {
+        padding: 0;
+        border: none;
+        background: none;
+    }
+
+    .container-result {
+        margin: 0 auto;
+        border-radius: 15px;
+        padding: .75rem 0.5rem;
+        margin: 0.25rem 0.25rem;
+        background-color: #bebebe;
+        text-align: center;
+    }
+    .container-result input {
+        background-color: inherit;
+        border:none;
+        color: white;
+        font-style:bold;
+        font-size: 1.25em;
+    }
+
+    /*.container-wrapper-numbers{
+      
+    }
+    .container-wrapper-operators{
+        margin: 1rem 1.5rem;
+        display: grid;
+        grid-template-columns: 30%  ;
+        grid-template-rows: 30%;
+        min-height: 15em;
+    }*/
+</style>
+
+<body>
+    <div>
+        <h1>Calculadora
+        </h1>
+        <div class="main-container">
+            <div class="container-result">
+                <input type="number" placeholder="Here'll be your result">
+            </div>
+            <div class="container-operators">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>%</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>*</button>
+                <button>3</button>
+                <button>2</button>
+                <button>1</button>
+                <button>-</button>
+                <button>0</button>
+                <button>.</button>
+                <button>=</button>
+                <button>+</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
