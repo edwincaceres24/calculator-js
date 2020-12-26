@@ -6,6 +6,7 @@ const operatorbutton_substract = document.getElementById("substract");
 const operatorbutton_multiply = document.getElementById("multiply");
 const operatorbutton_divide = document.getElementById("divide");
 const operatorbutton_allclear = document.getElementById("allclear");
+const operatorbutton_delete = document.getElementById("DEL");
 const operator_equals = document.getElementById("operator-equal");
 const result = document.getElementById("your_result");
 var first_operant = '';
@@ -34,15 +35,40 @@ operator_by_name.forEach(function (operator_button) {
 //Funciones para agregar números y operar
 
 function add_first_value(num) {
-    first_operant = first_operant + num
-    actualize_display()
+    if (first_operant.charAt(0)!=="0"){
+        first_operant = first_operant + num
+        actualize_display()
+    }
+    else{
+        first_operant=""
+    }
 }
 
 function add_second_value(num) {
-    second_operant = second_operant + num
-    actualize_display_2()
+    if (second_operant.charAt(0)!=="0"){
+        second_operant = second_operant + num
+        actualize_display_2()
+    }
+    else{
+        second_operant=""
+    }
+    
 }
 
+function delete_value() {
+    
+    if(result.innerHTML=="Your result") {
+        return
+    }
+    else if (operator==""){
+        first_operant=first_operant.slice(0,-1)
+        actualize_display()
+    }
+    else {
+        second_operant=second_operant.slice(0,-1)
+        actualize_display_2()
+    }
+}
 function operator_add(val_operator) {
     operator = val_operator
     console.log(first_operant)
@@ -62,7 +88,7 @@ function actualize_display_operator() {
 }
 
 function operator_allclear() {
-    result.innerHTML = 0;
+    result.innerHTML = "Your result";
     first_operant = '';
     second_operant = '';
     operator = '';
@@ -75,20 +101,24 @@ function operator_allclear() {
 function operator_equal() {
     switch(operator){
         case "+":
-            result.innerHTML = parseInt(first_operant) + parseInt(second_operant);
-            console.log("Hola_1")
+            result.innerHTML = parseFloat(first_operant) + parseFloat(second_operant);
+            first_operant = result.innerHTML;
+            second_operant="";
             break;
         case "-":
-            result.innerHTML = parseInt(first_operant) + parseInt(second_operant);
-            console.log("Hola_2")
+            result.innerHTML = parseFloat(first_operant) + parseFloat(second_operant);
+            first_operant = result.innerHTML;
+            second_operant="";
             break;
         case "*":
-            result.innerHTML = parseInt(first_operant) * parseInt(second_operant);
-            console.log("Hola_3")
+            result.innerHTML = parseFloat(first_operant) * parseFloat(second_operant);
+            first_operant = result.innerHTML;
+            second_operant="";
             break;
         case "/":
-            result.innerHTML = parseInt(first_operant) / parseInt(second_operant);
-            console.log("Hola_4")
+            result.innerHTML = parseFloat(first_operant) / parseFloat(second_operant);
+            first_operant = result.innerHTML;
+            second_operant="";
             break;
         default:
             result.innerHTML = ("Error");
@@ -100,5 +130,6 @@ function operator_equal() {
 //Triggers
 //operant_first.addEventListener("click",testvalue)
 //operatorbutton_add.addEventListener("click", operator_add)
-operatorbutton_allclear.addEventListener("click", operator_allclear)
-operator_equals.addEventListener("click", operator_equal)
+operatorbutton_allclear.addEventListener("click", operator_allclear);
+operatorbutton_delete.addEventListener("click", delete_value);
+operator_equals.addEventListener("click", operator_equal);
