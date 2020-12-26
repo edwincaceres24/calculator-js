@@ -1,79 +1,104 @@
-//DOM Operants
-//const operant_first = document.getElementsByTagName("button").value
-const operant_first = document.getElementById("number_7")
-const operatorbutton_add = document.getElementById("add")
-const operatorbutton_substract = document.getElementById("substract")
-const operatorbutton_multiply = document.getElementById("multiply")
-const operatorbutton_divide = document.getElementById("divide")
-const operatorbutton_allclear = document.getElementById("allclear")
+//Definimos las variables en el dom
 const operant_by_name = document.getElementsByName("data-number")
+const operator_by_name = document.getElementsByName("data-operator")
+const operatorbutton_add = document.getElementById("add");
+const operatorbutton_substract = document.getElementById("substract");
+const operatorbutton_multiply = document.getElementById("multiply");
+const operatorbutton_divide = document.getElementById("divide");
+const operatorbutton_allclear = document.getElementById("allclear");
+const operator_equals = document.getElementById("operator-equal");
+const result = document.getElementById("your_result");
+var first_operant = '';
+var second_operant = '';
+var operator = '';
 
-console.log(operant_by_name)
+//Funciones para capturar los selects
 
-function selector_by_name() {
-    operant_by_name.forEach(number_button => {console.log(number_button.innerText)})
-}
-//console.log(operant_first)
-//Operants selectors
+operant_by_name.forEach(function (number_button) {
+    number_button.addEventListener("click", function () {
+        if (first_operant.length>0 && operator.length>0 ){
+            add_second_value(number_button.innerText)    
+        }    
+        else {
+            add_first_value(number_button.innerText)
+        }
+    })
+})
 
-function testvalue() {
-    test_operant = parseInt(operant_first.innerHTML)
-    document.getElementById("your_result").innerHTML=test_operant
-    return test_operant
-}
+operator_by_name.forEach(function (operator_button) {
+    operator_button.addEventListener("click", function () {
+        operator_add(operator_button.innerText)
+    })
+})
 
-function firstvalue() {
-    first_operant = parseInt(prompt('Elige tu 1er número'));
-    return first_operant
+//Funciones para agregar números y operar
 
-    //first_operant=first_operant.addEventListener("click",console.log(first_operant))
-
-}
-
-function secondvalue(second_operant) {
-    second_operant = parseInt(prompt('Elige tu 2do número'));
-    //Return para arrojar un resultado
-    return second_operant
-}
-
-
-//Operators
-function operator_add(A, B) {
-    //Colocas la variable que se imprime en la primera función
-    if (typeof(test_operant)!= "object") {
-        document.getElementById("your_result").innerHTML = (test_operant + secondvalue(B));
-        console.log(test_operant + B)
-    }
-    else {
-        document.getElementById("your_result").innerHTML = ("Selecciona un número primero");    
-    }
+function add_first_value(num) {
+    first_operant = first_operant + num
+    actualize_display()
 }
 
-function operator_substract(A, B) {
-    document.getElementById("your_result").innerHTML = (firstvalue(A) - secondvalue(B));
-    console.log(A - B)
+function add_second_value(num) {
+    second_operant = second_operant + num
+    actualize_display_2()
 }
 
-function operator_multiply(A, B) {
-    document.getElementById("your_result").innerHTML = (firstvalue(A) * secondvalue(B));
-    console.log(A * B)
+function operator_add(val_operator) {
+    operator = val_operator
+    console.log(first_operant)
+    actualize_display_operator()
+    //¿Cómo cambiar de valor para que lo que se imprima ahora sea el segundo valor
+}
+function actualize_display() {
+    return result.innerHTML = first_operant
+    console.log('Tu primer número es ' + first_operant)
+}
+function actualize_display_2() {
+    return result.innerHTML = second_operant
+    console.log('Tu segundo número es ' + second_operant)
+}
+function actualize_display_operator() {
+    return result.innerHTML = first_operant+operator
 }
 
-function operator_divide(A, B) {
-    document.getElementById("your_result").innerHTML = (firstvalue(A) / secondvalue(B));
-    console.log(A / B)
-}
 function operator_allclear() {
-    document.getElementById("your_result").innerHTML = 0;
-    test_operant= null;
+    result.innerHTML = 0;
+    first_operant = '';
+    second_operant = '';
+    operator = '';
+
 }
 
+//Operants Functions
+
+
+function operator_equal() {
+    switch(operator){
+        case "+":
+            result.innerHTML = parseInt(first_operant) + parseInt(second_operant);
+            console.log("Hola_1")
+            break;
+        case "-":
+            result.innerHTML = parseInt(first_operant) + parseInt(second_operant);
+            console.log("Hola_2")
+            break;
+        case "*":
+            result.innerHTML = parseInt(first_operant) * parseInt(second_operant);
+            console.log("Hola_3")
+            break;
+        case "/":
+            result.innerHTML = parseInt(first_operant) / parseInt(second_operant);
+            console.log("Hola_4")
+            break;
+        default:
+            result.innerHTML = ("Error");
+            console.log(operator)
+    }
+
+}
 
 //Triggers
-operant_by_name.addEventListener("click",selector_by_name)
-operant_first.addEventListener("click",testvalue)
-operatorbutton_add.addEventListener("click", operator_add)
-operatorbutton_substract.addEventListener("click", operator_substract)
-operatorbutton_multiply.addEventListener("click", operator_multiply)
-operatorbutton_divide.addEventListener("click", operator_divide)
+//operant_first.addEventListener("click",testvalue)
+//operatorbutton_add.addEventListener("click", operator_add)
 operatorbutton_allclear.addEventListener("click", operator_allclear)
+operator_equals.addEventListener("click", operator_equal)
