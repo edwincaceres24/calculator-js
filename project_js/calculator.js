@@ -115,7 +115,7 @@ function operator_equal() {
             first_operant = result.innerHTML;
             second_operant="";
             break;
-        case "/":
+        case "%":
             result.innerHTML = parseFloat(first_operant) / parseFloat(second_operant);
             first_operant = result.innerHTML;
             second_operant="";
