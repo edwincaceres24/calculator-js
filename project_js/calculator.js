@@ -106,7 +106,7 @@ function operator_equal() {
             second_operant="";
             break;
         case "-":
-            result.innerHTML = parseFloat(first_operant) + parseFloat(second_operant);
+            result.innerHTML = parseFloat(first_operant) - parseFloat(second_operant);
             first_operant = result.innerHTML;
             second_operant="";
             break;
