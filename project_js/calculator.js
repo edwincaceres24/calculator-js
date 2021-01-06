@@ -10,20 +10,20 @@ const operatorbutton_delete = document.getElementById("DEL");
 const operator_equals = document.getElementById("operator-equal");
 const result = document.getElementById("your_result");
 const input= document.getElementById("input");
-var first_operant = '';
+var first_operant='';
 var second_operant = '';
-var operator = '';
+var operator = false;
 
 //Funciones para capturar los selects mediante click
 
 operant_by_name.forEach(function (number_button) {
     number_button.addEventListener("click", function () {
-        if (first_operant.length>0 && operator.length>0 ){
+        // first_operant.length>0 && operator.length>0
+        if (first_operant!==undefined && first_operant.length>0 && operator.length>0){
             add_second_value(number_button.innerText)    
         }    
         else {
-            add_first_value(number_button.innerText)
-            console.log(number_button)
+            add_value(number_button.innerText)
         }
     })
 })
@@ -56,15 +56,17 @@ operator_by_name.forEach(function (operator_button) {
 
 //Funciones para agregar números y operar
 
-function add_first_value(num) {
-    if (first_operant.charAt(0)!=="0"){
-        first_operant = first_operant + num
-        actualize_display()
+function add_value(num) {
+     //Este es el primver valor que va asignar al resultado
+        if(first_operant.charAt(0)=="0"){
+            console.log("Cero no puede ser el primer carácter de un número")
+            first_operant=""
+            }
+        else {
+            first_operant = first_operant + num
+            actualize_display()
+        } 
     }
-    else{
-        first_operant=""
-    }
-}
 
 function add_second_value(num) {
     if (second_operant.charAt(0)!=="0"){
@@ -92,13 +94,14 @@ function delete_value() {
     }
 }
 function operator_add(val_operator) {
+    operator=""
     operator = val_operator
     console.log(first_operant)
     actualize_display_operator()
     //¿Cómo cambiar de valor para que lo que se imprima ahora sea el segundo valor
 }
 function actualize_display() {
-    if (!(first_operant=="") && operator!="") {
+    if ((first_operant!="") && operator!="") {
         return result.innerHTML = second_operant
     }
     else{
