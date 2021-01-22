@@ -1,48 +1,60 @@
 // Se pudo dinamizar con el telcado, el problema es que te ejecuta todas las teclas
-keys=document.body
-
-// Array.from(document.getElementsByTagName('button'))
-
-
-// keys.forEach( key =>
-//     key.addEventListener('keydown', 
-//         function(key_pressed) { 
-//         // Acá debo agregar la condición que iguale la tecla presionada. La condición está mal
-//             if(key_pressed.key in keys && first_operant.length>0 && operator.length>0){ 
-//                 add_second_value(key_pressed.key)
-//                 console.log('Estás colocando el segundo valor')
-//             }
-//             else if (key_pressed.key in operant_by_name && first_operant==="") {
-//                 console.log('Estás colocando el primer valor')
-//                 console.log(keys)
-//                 add_first_value(key_pressed.key)
-//             }
-//             else{
-//                 console.log("Se está aplicando una tercera condición")
-//             }
-//         }
-//     )   
-// )
-
-keys.addEventListener('keydown', 
-function(key_pressed) { 
-// Acá debo agregar la condición que iguale la tecla presionada. La condición está mal
-    if(key_pressed.key in operant_by_name && first_operant.length>0 && operator!==false){ 
-        add_second_value(key_pressed.key)
-        console.log('Estás colocando el segundo valor')
+keys_number= [].map.call(operant_by_name,
+    function(obj){
+        return obj.textContent
     }
-    else if (key_pressed.key in operant_by_name && operator===false) {
-        console.log('Estás colocando el primer valor')
-        add_value(key_pressed.key)
+)
+
+keys_operator=[].map.call(operator_by_name, obj => obj.textContent)
+
+// console.log(keys_number)
+// console.log(keys_operator)
+
+// document.body.addEventListener("keydown", e=> console.log(e.keyCode))
+
+// Funciones para detectar teclas
+
+document.body.addEventListener("keydown", function (number_button) {
+    if(keys_number.includes(number_button.key) && first_operant!==undefined && first_operant.length>0 && operator.length>0) {
+        console.log(`La tecla que presionaste es ${number_button.key}`)
+        add_second_value(number_button.key)
     }
-    else{
-        console.log("La tecla ingresada no se puede colocar en la calculadora")
+    else if (keys_number.includes(number_button.key)){
+        add_value(number_button.key)
+    }
+    else {
+        console.log(`La tecla ${number_button.key} no está disponible en el array`)
+    }
+})
+
+document.body.addEventListener("keydown", function (number_button){
+    if(keys_operator.includes(number_button.key)){
+        operator_add(number_button.key)
     }
 }
 )
 
-operator_by_name.forEach(function (operator_button) {
-    operator_button.addEventListener("keydown", function () {
-        operator_add(operator_button.innerText)
-    })
+document.body.addEventListener("keydown", function(button){
+  if(button.keyCode==13){
+      operator_equal()
+  } 
 })
+
+document.getElementsByTagName(iframe")
+
+// operant_by_name.forEach(function (number_button) {
+//     number_button.addEventListener("keydown", function () {
+//         if(keys.includes(number_button.textContent)) {
+//             console.log(`La tecla que presionaste es ${number_button.textContent}`)
+//             console.log(number_button.textContent)
+//             add_value(number_button.innerText)
+//         }
+//         else{
+//             console.log(`La tecla ${number_button.textContent} no está disponible en el array`)
+
+            
+//         }
+//     })
+// })
+
+

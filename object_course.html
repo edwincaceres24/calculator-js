@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .product{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            padding: 1rem;
+            flex-grow: 1;
+            flex-basis: 15%;
+            background-color: white;
+            /* display: grid;
+            grid-template-columns: 25%;
+            grid-template-rows: repeat(4, 25) background-color: yellow; */
+        }
+
+        .product-image {
+            background-color: none;
+            max-height: 170px;
+        }
+        .product-info{
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .product-info h6{
+            font-size: 1.5em;
+            margin: inherit;
+        }
+        .input{
+            text-align: center;
+        }
+        .second-question{
+            background-color: rgba(0, 0, 255, 0.13);
+            display: none;
+        }
+        .selected-input{
+            background-color: red;
+            display: none;
+        }
+        .hide-option{
+            display: none;
+        }
+        .show-option{
+            display: block;
+        }
+    </style>
+    <title>Recomendador de productos</title>
+</head>
+
+<body>
+    <h1>Calcula tus ovillos</h1>
+
+    <h2>1 - Selecciona tu proyecto</h2>
+
+    <section class="product">
+
+        <div class="product-card">
+            <div >
+                <img class="product-image" src="https://knityou.pe/wp-content/uploads/2020/09/chompac.png" alt="Product">
+            </div>
+            <div class="product-info">
+                <h5>Product Name</h5>
+                <h6> $66.99</h6>
+            </div>
+        </div>
+        <div class="product-card">
+            <div >
+                <img class="product-image"src="https://knityou.pe/wp-content/uploads/2020/09/chompac.png" alt="Product">
+            </div>
+            <div class="product-info">
+                <h5>Product Name II</h5>
+                <h6> $66.99</h6>
+            </div>
+        </div>
+        <div class="product-card">
+            <div >
+                <img class="product-image" src="https://knityou.pe/wp-content/uploads/2020/09/chompac.png" alt="Product">
+            </div>
+            <div class="product-info">
+                <h5>Product Name III</h5>
+                <h6> $66.99</h6>
+            </div>
+        </div>
+    </section>
+    <h2>2 - Selecciona el tamaño</h2>
+    <select name="" id="main-select" class="input">
+        <option selected="" value="unselect">Selcciona el tamaño</option>
+        <option name ="first-option"class="second-question" value="1">1</option>    
+        <option name ="first-option" class="second-question" value="2">Dos</option>    
+        <option name ="first-option" class="second-question" value="3">Tres</option>    
+        <option name ="second-option" class="second-question" value="4">Cuatro</option>    
+        <option name ="second-option" class="second-question" value="5">Cinco</option>    
+        <option name ="second-option" class="second-question" value="6">Seis</option>    
+        <option name ="third-option" class="second-question" value="De 2 a 4 años">De 2 a 4 años</option>    
+        <option name ="third-option" class="second-question" value="De 4 a 6 años">De 4 a 6 años</option>    
+        <option name ="third-option" class="second-question " value="Mayor a 6 años">Mayor a 6 años</option>    
+    </select>
+    <div id="recommended-product"></div>
+    <script src="project_js/objetc_course.js"></script>
+</body>
+
+</html>

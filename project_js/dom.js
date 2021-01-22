@@ -55,3 +55,22 @@ values.forEach(function values(value){
     value.addEventListener('click', e => { 
         holaMundo(e)} )
 })
+
+const   nodo= document.getElementById('main-list'),
+        ad = document.createElement('div');
+
+ad.id='GoLive';
+ad.textContent='Soy Edwin';
+
+
+nodo.insertAdjacentHTML('beforebegin',`<h2>Soy el CEO de esta empresa</h2>`)
+// console.log("Mira esto Perro")
+// nodeList_array.forEach(e => console.log(Array.from(e.textContent)))
+// var value=[].map.call(nodeList,
+//     function (obj){
+//             return obj.textContent
+//         }
+//     );
+// console.log(value)
+
+// nodeList_array.forEach(e => e )

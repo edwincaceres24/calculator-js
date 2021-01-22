@@ -34,26 +34,6 @@ operator_by_name.forEach(function (operator_button) {
     })
 })
 
-//Funciones para capturar eventos mediante keyboards
-
-// operant_by_name.forEach( key =>
-//     key.addEventListener('keydown', 
-//         function(key_pressed) { 
-//         // Acá debo agregar la condición que iguale la tecla presionada. La condición está mal
-//             if(key_pressed.key in keys && first_operant.length>0 && operator.length>0){ 
-//                 add_second_value(key_pressed.key)
-//                 console.log('Estás colocando el segundo valor')
-//             }
-//             else if (key_pressed.key in operant_by_name) {
-//                 console.log('Estás colocando el primer valor')
-//                 add_first_value(key_pressed.key)
-//             }
-//         }
-//     )   
-// )
-
-
-
 //Funciones para agregar números y operar
 
 function add_value(num) {
@@ -160,6 +140,7 @@ function operator_equal() {
 operatorbutton_allclear.addEventListener("click", operator_allclear);
 operatorbutton_delete.addEventListener("click", delete_value);
 operator_equals.addEventListener("click", operator_equal);
-
-// console.log(document.querySelector('key'))
-// input.addEventListener("keydown",e => {console.log(e)})
+operator_equals.addEventListener("keydown", function(){
+    
+    operator_equal
+})
