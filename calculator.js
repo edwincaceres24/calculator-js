@@ -132,7 +132,6 @@ function operator_allclear() {
     first_operant = '';
     second_operant = '';
     operator = '';
-
 }
 
 //Operants Functions
