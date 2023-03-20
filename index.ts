@@ -1,7 +1,7 @@
-const numbers:NodeList = document.getElementsByName("data-number"),
+const numbers:NodeListOf<HTMLElement> = document.getElementsByName("data-number"),
     keynumbers:number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     keyOperators:string[] = ["+", "-", "*", "/"],
-    operators:NodeList = document.getElementsByName("data-operator"),
+    operators:NodeListOf<HTMLElement>  = document.getElementsByName("data-operator"),
     operatorbutton_add:HTMLElement | null = document.getElementById("add"),
     operatorbutton_substract:HTMLElement | null = document.getElementById("substract"),
     operatorbutton_multiply:HTMLElement | null = document.getElementById("multiply"),
@@ -14,7 +14,7 @@ const numbers:NodeList = document.getElementsByName("data-number"),
 let first_operant:string= '',
     second_operant:string= '',
     operator:boolean= false,
-    inputForKey:string= '';
+    inputForKey:string|number= '';
 
 //Functions
 const printKeyOnScreenByClick = function (number:HTMLElement) {
@@ -23,8 +23,8 @@ const printKeyOnScreenByClick = function (number:HTMLElement) {
     printOperatorOnScreenByClick = function (operator_button:HTMLElement) {
         operator_button.addEventListener("click", setOperatorOnScreen)
     },
-    printKeyOnScreenByKey = (e) => {
-        inputForKey = parseInt(e.key);
+    printKeyOnScreenByKey = (e:KeyboardEvent) => {
+        inputForKey= parseInt(e.key);
         if (keynumbers.includes(inputForKey)) {
             console.log(inputForKey)
             setValueOnScreenByKey(inputForKey)
@@ -34,12 +34,10 @@ const printKeyOnScreenByClick = function (number:HTMLElement) {
 
         }
     },
-    printKeyOperatorsByKey = (e) => {
-        let value = e.key;
+    printKeyOperatorsByKey = (e:KeyboardEvent) => {
+        let value:string = e.key;
         if (keyOperators.includes(value)) {
-            console.log(value)
             setOperatorOnScreenByKey(value)
-
         }
     },
     setValueOnScreen = function () {
@@ -51,7 +49,7 @@ const printKeyOnScreenByClick = function (number:HTMLElement) {
         }
         console.log(num.innerText)
     },
-    setValueOnScreenByKey = function (num) {
+    setValueOnScreenByKey = function (num:number) {
         if (first_operant !== undefined && first_operant.length > 0 && operator.length > 0) {
             add_second_value(num)
         } else {
